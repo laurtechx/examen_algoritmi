@@ -1,13 +1,32 @@
-# Problema 1 – Merge Sort (20p)
-# TODO: Implementați algoritmul Merge Sort și explicați complexitatea.
+#Merge sort
+def merge_sort(vectori):
+    if len(vectori)>1:
+        mid = len(vectori)//2
+        L=vectori[:mid]
+        R=vectori[mid:]
+        merge_sort(R)
+        merge_sort(L)
+        i=j=k=0
+        while i<len(L) and j<len(R):
+            if L[i]<=R[j]:
+               vectori[k]=L[i]
+               i+=1
+            else:
+                vectori[k]=R[j]
+                j+=1
+                k+=1
 
-from typing import List
+        while i<len(L):
+            vectori[k]=L[i]
+            i+=1
+            k+=1
+        while j<len(R):
+            vectori[k]=R[j]
+            j+=1
+            k+=1
 
-def merge_sort(a: List[int]) -> List[int]:
-    # TODO
-    return a
+#Exemplu:
+vectori=[56,89,12,34,56,40,10]
+merge_sort(vectori)
+print("Merge_sort:",vectori)
 
-if __name__ == "__main__":
-    data = [5, 2, 8, 1, 3]
-    print("input :", data)
-    print("sorted:", merge_sort(data))
